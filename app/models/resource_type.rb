@@ -1,4 +1,4 @@
-class ResoureType < ActiveRecord::Base
+class ResourceTool < ActiveRecord::Base
   belongs_to :resource
-  belongs_to :type
+  belongs_to :tool
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150304154602) do
+ActiveRecord::Schema.define(version: 20150304172825) do
 
   create_table "cohorts", force: :cascade do |t|
     t.string "name"
@@ -22,9 +22,9 @@ ActiveRecord::Schema.define(version: 20150304154602) do
     t.integer "subject_id"
   end
 
-  create_table "resource_types", force: :cascade do |t|
+  create_table "resource_tools", force: :cascade do |t|
     t.integer "resource_id"
-    t.integer "type_id"
+    t.integer "tool_id"
   end
 
   create_table "resources", force: :cascade do |t|
@@ -37,13 +37,14 @@ ActiveRecord::Schema.define(version: 20150304154602) do
   create_table "students", force: :cascade do |t|
     t.string  "name"
     t.integer "cohort_id"
+    t.string  "pic_link"
   end
 
   create_table "subjects", force: :cascade do |t|
     t.string "name"
   end
 
-  create_table "types", force: :cascade do |t|
+  create_table "tools", force: :cascade do |t|
     t.string "name"
   end
 

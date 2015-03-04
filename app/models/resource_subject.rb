@@ -1,4 +1,4 @@
-class ResoureSubject < ActiveRecord::Base
+class ResourceSubject < ActiveRecord::Base
   belongs_to :resource
-  belongs_to :type
+  belongs_to :subject
 end
