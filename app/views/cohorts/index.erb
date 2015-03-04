@@ -1,0 +1,24 @@
+<h1>Cohorts</h1>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Students Count</th>
+        <th>Resource Count</th>
+      </tr>
+    </thead>
+    <tbody>
+ 
+      <tr>
+      <% @cohorts.each do |cohort| %>
+        <td><a href="cohorts/<%= cohort.id %>/resources"><%= cohort.name %></a></td>
+        <td><%= cohort.students.count %></td>
+        <td><%= cohort.resources.count %></td>
+      <% end %>
+        
+      </tr>
+
+    </tbody>
+  </table>
+  <a class="button" href="/cohorts/new">Add a new cohort</a> 

@@ -1,0 +1,27 @@
+<h1>Students</h1>
+  <h2><%= @cohort.name %></h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Resources Posted</th>
+        <th>Total Karma</th>
+        <th class="change"></th>
+      </tr>
+    </thead>
+      <tbody>
+        <tr>
+        <% @students.each do |student| %>
+          <td><%= student.name %></td>
+          <td><%= student.resources.count %></td>
+          <td><%= student.total_karma %></td>
+          <td><a href="/cohorts/<%= @cohort.id %>/students/<%= student.id %>">View</a></td>
+          </tr>
+                    <% end %>
+
+        </tbody>
+      </table>
+
+
+
+

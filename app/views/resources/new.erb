@@ -1,0 +1,29 @@
+<h1>Add A Resource</h1>
+<form action="/cohorts/<%= @cohort.id %>/resources" method="POST">
+  <label for="name"><h3>Name of Resource</h3></label>
+  <input type="text" id="name" name="resource[name]">
+  <label for="description"><h3>Description</h3></label>
+  <input type="textarea" id="description" name="resource[description]" rows="5">
+  <label for="link"><h3>Link</h3></label>
+  <input type="text" id="link" name="resource[link]">
+  <label for"student"><h3>Author</h3></label>
+  <select name="resource[student_id]">
+
+    <% @students.each do |student| %>
+    <option value="<%= student.id %>"><%= student.name %></option>
+    <% end %>
+  </select><br><br>
+  
+  <label for"tools"><h3>Type of Tool</h3></label>
+   <% @tools.each do |tool| %>
+
+  <label><input type="checkbox" name="resource[tool_ids][]" value="<%=tool.id %>"> <%= tool.name %></label>
+  <% end %><br>or create a new one: <input type="text" name="resource[tool_name]"><br>
+    <label for"tools"><h3>Related Subjects</h3></label>
+   <% @subjects.each do |subject| %>
+
+  <label><input type="checkbox" name="resource[subject_ids][]" value="<%=subject.id %>"> <%= subject.name %></label>
+  <% end %><br>or create a new one: <input type="text" name="resource[subject_name]"><br>
+  <input type="submit" value="create">
+
+</form>

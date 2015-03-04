@@ -9,4 +9,7 @@ end
 
 use Rack::MethodOverride
 use RootController
+use CohortsController
+use ResourcesController
+use StudentsController
 run ApplicationController

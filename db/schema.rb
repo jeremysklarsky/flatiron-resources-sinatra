@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150304172825) do
+ActiveRecord::Schema.define(version: 20150304200112) do
 
   create_table "cohorts", force: :cascade do |t|
     t.string "name"
@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 20150304172825) do
     t.text    "description"
     t.string  "link"
     t.integer "student_id"
+    t.integer "karma"
   end
 
   create_table "students", force: :cascade do |t|

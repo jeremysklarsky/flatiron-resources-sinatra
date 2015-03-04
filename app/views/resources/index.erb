@@ -1,0 +1,37 @@
+  <h1>Resources</h1>
+  <h2><%= @cohort.name %></h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Link</th>
+        <th>Subject</th>
+        <th>Tool Type</th>
+        <th>Posted By</th>
+        <th>Karma</th>
+        <th class="change"></th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @resources.each do |resource| %>
+      <tr>
+        <td><%= resource.name %></td>
+        <td><%= resource.description %></td>
+        <td><a href="<%= resource.link %>" target="_blank"><%= resource.link %></a></td>
+        <td><% resource.subjects.each do |subject| %>
+        <%= subject.name %><br><% end %></td>
+        <td><% resource.tools.each do |tool| %>
+        <%= tool.name %><br><% end %></td>
+        <td><%= resource.student.name %></td>
+        <td><form action="/cohorts/<%= @cohort.id %>/resources/<%= resource.id %>/karma" method="POST"><button type="submit">Add karma!</button>
+        &#x25B2; <%= resource.karma %>
+        </form>
+        <td><a href="/resources/<%= resource.id %>/edit">Edit</a></td>
+        
+      </tr>
+    <% end %>
+
+    </tbody>
+  </table>
+  <a class="button" href="/cohorts/<%= @cohort.id %>/resources/new">New Resource</a> 
