@@ -14,6 +14,7 @@ gem 'rake'
 gem 'rspec'
 gem 'rack-test'
 gem 'sinatra-twitter-bootstrap', :require => 'sinatra/twitter-bootstrap'
+gem 'nokogiri'
 
 group :test do
   gem 'rspec'

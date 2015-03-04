@@ -118,6 +118,7 @@ DEPENDENCIES
   activerecord
   capybara
   database_cleaner!
+  nokogiri
   pry
   rack-test
   rake
