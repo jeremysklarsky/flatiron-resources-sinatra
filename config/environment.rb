@@ -1,16 +1,22 @@
 require 'bundler/setup'
-Bundler.require
+Bundler.require(:default)
 require 'open-uri'
 
 ENV['SINATRA_ENV'] ||= "development"
 
-ActiveRecord::Base.establish_connection(
-  :adapter => "sqlite3",
-  :database => "db/student_resources_#{ENV['SINATRA_ENV']}.sqlite"
-)
+configure :development do
+  set :database, "sqlite3:db/student_resources_#{ENV['SINATRA_ENV']}.sqlite"
+  set :show_exceptions, true
+end
+
+configure :production do
+  ActiveRecord::Base.establish_connection(ENV['DATABASE_URL'] || 'postgres://localhost/mydb')
+end
 
 Dir[File.join(File.dirname(__FILE__), "../app/models", "*.rb")].each {|f| require f}
 Dir[File.join(File.dirname(__FILE__), "../app/controllers", "*.rb")].each {|f| require f}
 
 require_all 'app'
 require_all 'lib'
+
+
