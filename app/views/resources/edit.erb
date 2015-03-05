@@ -1,0 +1,44 @@
+<h1>Edit A Resource</h1>
+<form action="/cohorts/<%= @cohort.id %>/resources/<%= @resource.id %>" method="POST">
+<input type="hidden" name="_method" value="PATCH">
+
+  <label for="name"><h3>Name of Resource</h3></label>
+  <input type="text" id="name" name="resource[name]" value="<%= @resource.name %>"><br>
+  <label for="description"><h3>Description</h3></label>
+  <input type="textarea" id="description" name="resource[description]" rows="20" value="<%= @resource.description %>"><br>
+  <label for="link"><h3>Link</h3></label>
+  <input type="text" id="link" name="resource[link]" value="<%= @resource.link %>"><br>
+  <label for"student"><h3>Author</h3></label>
+  <select name="resource[student_id]">
+
+    <% @students.all.each do |student| %>
+      <% if @resource.student == student %>
+      <option selected="selected" value="<%= student.id %>"><%= student.name %></option>
+      <% else %>
+      <option value="<%= student.id %>"><%= student.name %></option>
+      <% end %>
+    <% end %>
+  </select><br><br>
+  
+  <h3>Type of Tool</h3>
+  <% Tool.all.each do |tool| %>
+    <input type="checkbox" name="resource[tool_ids][]" value="<%=tool.id %>" <%= "checked" if @resource.tools.include?(tool)%>><label> <%= tool.name %></label><br>
+  <% end %><br>
+
+  or create a new one: <input type="text" name="resource[tool_name]"><br>
+    
+  <h3>Related Subjects</h3>
+  
+  <% Subject.all.each do |subject| %>
+
+  <label><input type="checkbox" name="resource[subject_ids][]" value="<%=subject.id %>" <%= "checked" if @resource.subjects.include?(subject) %>> <%= subject.name %></label><br>
+  <% end %><br>or create a new one: <input type="text" name="resource[subject_name]"><br>
+  <input type="submit" value="Update">
+
+</form>
+  <form action="/cohorts/<%= @cohort.id %>/resources/<%= @resource.id %>" method="POST">
+  <input type="hidden" name="_method" value="delete">
+  <input type="submit" value="DELETE THIS RESOURCE">
+</form>
+
+<%= erb :'layouts/_footer' %>

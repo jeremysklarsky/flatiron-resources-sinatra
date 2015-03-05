@@ -1,0 +1,27 @@
+<h1>Subjects</h1>
+  <h2><%= @cohort.name %></h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Resources</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% Subject.all.each do |subject| %>
+      <tr>
+        <td><a href="/cohorts/<%= @cohort.id %>/subjects/<%= subject.id %>"><%= subject.name %></a></td>
+         
+        <td>
+         <% subject.resources.each do |resource| %>
+          <a href="/cohorts/<%= @cohort.id %>/resources/<%= resource.id %>"><%= resource.name %></a><br>
+         
+          <% end %>
+          </td> 
+        <% end %>
+
+      </tr>
+
+    </tbody>
+  </table>
+<%= erb :'layouts/_footer' %>

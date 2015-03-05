@@ -19,10 +19,13 @@
           <td><%= resource.name %></td>
           <td><%= resource.description %></td>
           <td><a href="<%= resource.link %>" target="_blank"><%= resource.link %></a></td>
+          
           <td><% resource.subjects.each do |subject| %>
-            <%= subject.name %><br><% end %></td>
-            <td><% resource.tools.each do |tool| %>
-            <%= tool.name %><br><% end %></td>
+            <a href="/cohorts/<%= @cohort.id %>/subjects/<%= subject.id %>"><%= subject.name %></a><br><% end %></td>
+          
+          <td><% resource.tools.each do |tool| %>
+            <a href="/cohorts/<%= @cohort.id %>/tools/<%= tool.id %>"><%= tool.name %></a><br><% end %></td>
+          
           <td><%= resource.karma %></td>
 
 
@@ -32,10 +35,5 @@
 
         </tbody>
       </table>
-<a class="button" href="/cohorts/<%= @cohort.id %>/resources/new">Add a Resource</a> 
-<a class="button" href="/cohorts/<%= @cohort.id %>/students">All Students</a> 
-<a class="button" href="/cohorts/<%= @cohort.id %>/resources">All Resources</a> 
-
-
-
+<%= erb :'layouts/_footer' %>
 

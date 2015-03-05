@@ -130,7 +130,7 @@ a.button:active, input[type="submit"]:active {
 }
 
 label, input {
-  display: block;
+  display: inline-block;
   margin: 5px 0;
   font-size: 1em;
 }

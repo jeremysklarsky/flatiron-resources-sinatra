@@ -16,22 +16,25 @@
     <tbody>
     <% @resources.each do |resource| %>
       <tr>
-        <td><%= resource.name %></td>
+        <td><a href="/cohorts/<%= @cohort.id %>/resources/<%= resource.id %>"><%= resource.name %></td>
         <td><%= resource.description %></td>
         <td><a href="<%= resource.link %>" target="_blank"><%= resource.link %></a></td>
+        
         <td><% resource.subjects.each do |subject| %>
-        <%= subject.name %><br><% end %></td>
+        <a href="/cohorts/<%= @cohort.id %>/subjects/<%= subject.id %>"><%= subject.name %></a><br><% end %></td>
+        
         <td><% resource.tools.each do |tool| %>
-        <%= tool.name %><br><% end %></td>
-        <td><%= resource.student.name %></td>
+        <a href="/cohorts/<%= @cohort.id %>/tools/<%= tool.id %>"><%= tool.name %></a><br><% end %></td>
+        
+        <td><a href="/cohorts/<%= @cohort.id %>/students/<%= resource.student.id %>"><%= resource.student.name %></a></td>
         <td><form action="/cohorts/<%= @cohort.id %>/resources/<%= resource.id %>/karma" method="POST"><button type="submit">Add karma!</button>
         &#x25B2; <%= resource.karma %>
         </form>
-        <td><a href="/resources/<%= resource.id %>/edit">Edit</a></td>
+        <td><a href="/cohorts/<%= @cohort.id %>/resources/<%= resource.id %>/edit">Edit</a></td>
         
       </tr>
     <% end %>
 
     </tbody>
   </table>
-  <a class="button" href="/cohorts/<%= @cohort.id %>/resources/new">New Resource</a> 
+<%= erb :'layouts/_footer' %>

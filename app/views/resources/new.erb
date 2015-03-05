@@ -1,11 +1,11 @@
 <h1>Add A Resource</h1>
 <form action="/cohorts/<%= @cohort.id %>/resources" method="POST">
   <label for="name"><h3>Name of Resource</h3></label>
-  <input type="text" id="name" name="resource[name]">
+  <input type="text" id="name" name="resource[name]"><br>
   <label for="description"><h3>Description</h3></label>
-  <input type="textarea" id="description" name="resource[description]" rows="5">
+  <input type="textarea" id="description" name="resource[description]" rows="5"><br>
   <label for="link"><h3>Link</h3></label>
-  <input type="text" id="link" name="resource[link]">
+  <input type="text" id="link" name="resource[link]"><br>
   <label for"student"><h3>Author</h3></label>
   <select name="resource[student_id]">
 
@@ -14,16 +14,21 @@
     <% end %>
   </select><br><br>
   
-  <label for"tools"><h3>Type of Tool</h3></label>
-   <% @tools.each do |tool| %>
+  <h3>Type of Tool</h3>
+  <% @tools.each do |tool| %>
+    <input type="checkbox" name="resource[tool_ids][]" value="<%=tool.id %>"><label> <%= tool.name %></label><br>
+  <% end %><br>
 
-  <label><input type="checkbox" name="resource[tool_ids][]" value="<%=tool.id %>"> <%= tool.name %></label>
-  <% end %><br>or create a new one: <input type="text" name="resource[tool_name]"><br>
-    <label for"tools"><h3>Related Subjects</h3></label>
-   <% @subjects.each do |subject| %>
+  or create a new one: <input type="text" name="resource[tool_name]"><br>
+    
+  <h3>Related Subjects</h3>
+  
+  <% @subjects.each do |subject| %>
 
-  <label><input type="checkbox" name="resource[subject_ids][]" value="<%=subject.id %>"> <%= subject.name %></label>
+  <label><input type="checkbox" name="resource[subject_ids][]" value="<%=subject.id %>"> <%= subject.name %></label><br>
   <% end %><br>or create a new one: <input type="text" name="resource[subject_name]"><br>
   <input type="submit" value="create">
 
 </form>
+
+<%= erb :'layouts/_footer' %>

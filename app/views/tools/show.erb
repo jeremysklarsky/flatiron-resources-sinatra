@@ -1,0 +1,28 @@
+<h1>Tool Type: <%= @tool.name %></h1>
+  <h2><%= @cohort.name %></h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Resource</th>
+        <th>Description</th>
+        <th>Link</th>
+        <th>Posted By</th>
+        <th>Karma</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @tool.resources.each do |resource| %>
+      <tr>
+        <td><%= resource.name %></td>
+        <td><%= resource.description %></td> 
+        <td><a href="<%= resource.link %>" target="_blank"><%= resource.link %></a></td>        <td><a href="/cohorts/<%= @cohort.id %>/students/<%= resource.student.id %>"><%= resource.student.name %></a></td>
+        <td><form action="cohorts/<%= @cohort.id %>/resources/<%= resource.id %>/karma" method="POST"><button type="submit">Add karma!</button>
+        &#x25B2; <%= resource.karma %>
+        </form>
+          <% end %>
+      </tr>
+
+
+    </tbody>
+  </table>
+<%= erb :'layouts/_footer' %>

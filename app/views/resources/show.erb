@@ -1,0 +1,37 @@
+<h1><%= @resource.name %></h1>
+  <h2><%= @cohort.name %></h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Description</th>
+        <th>Link</th>
+        <th>Subject</th>
+        <th>Tool Type</th>
+        <th>Posted By</th>
+        <th>Karma</th>
+        <th class="change"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><%= @resource.description %></td>
+        <td><a href="<%= @resource.link %>" target="_blank"><%= @resource.link %></a></td>
+        
+        <td><% @resource.subjects.each do |subject| %>
+        <a href="/cohorts/<%= @cohort.id %>/subjects/<%= subject.id %>"><%= subject.name %></a><br><% end %></td>
+        
+        <td><% @resource.tools.each do |tool| %>
+        <a href="/cohorts/<%= @cohort.id %>/tools/<%= tool.id %>"><%= tool.name %></a><br><% end %></td>
+        
+        <td><a href="/cohorts/<%= @cohort.id %>/students/<%= @resource.student.id %>"><%= @resource.student.name %></a></td>
+        <td><form action="/cohorts/<%= @cohort.id %>/resources/<%= @resource.id %>/karma" method="POST"><button type="submit">Add karma!</button>
+        &#x25B2; <%= @resource.karma %>
+        </form>
+        
+        <td><a href="/cohorts/<%= @cohort.id %>/resources/<%= @resource.id %>/edit">Edit</a></td>
+        
+      </tr>
+
+    </tbody>
+  </table>
+<%= erb :'layouts/_footer' %>

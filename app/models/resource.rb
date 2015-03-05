@@ -1,7 +1,9 @@
 class Resource < ActiveRecord::Base
   belongs_to :student
+  
   has_many :resource_subjects
   has_many :subjects, through: :resource_subjects
+  
   has_many :resource_tools
   has_many :tools, through: :resource_tools
 
