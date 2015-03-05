@@ -10,7 +10,4 @@ class ToolsController < ApplicationController
     @tool = Tool.find(params[:tool_id])
     erb :'/tools/show'
   end
-
-
-
 end

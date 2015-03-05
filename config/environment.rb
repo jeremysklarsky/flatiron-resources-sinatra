@@ -10,7 +10,7 @@ configure :development do
 end
 
 configure :production do
-  ENV['DATABASE_URL'] = ENV['HEROKU_POSTGRESQL_MAROON_URL']
+  set :environment, :production
   ActiveRecord::Base.establish_connection(ENV['DATABASE_URL'] || 'postgres://localhost/flatiron-resources')
 end
 
