@@ -14,8 +14,9 @@
       </tr>
     </thead>
       <tbody>
-        <tr>
         <% @student.resources.each do |resource| %>
+
+        <tr>
           <td><%= resource.name %></td>
           <td><%= resource.description %></td>
           <td><a href="<%= resource.link %>" target="_blank"><%= resource.link %></a></td>
