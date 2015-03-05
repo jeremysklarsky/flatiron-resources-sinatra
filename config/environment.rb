@@ -10,7 +10,8 @@ configure :development do
 end
 
 configure :production do
-  ActiveRecord::Base.establish_connection(ENV['DATABASE_URL'] || 'postgres://localhost/mydb')
+  ENV['DATABASE_URL'] = ENV['HEROKU_POSTGRESQL_MAROON_URL']
+  ActiveRecord::Base.establish_connection(ENV['DATABASE_URL'] || 'postgres://localhost/flatiron-resources')
 end
 
 Dir[File.join(File.dirname(__FILE__), "../app/models", "*.rb")].each {|f| require f}
