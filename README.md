@@ -7,5 +7,5 @@ Give karma to people by upvoting resources you have enjoyed!
 
 ##TO DO
 
-Slack notification integration
+Slack notification integration<br>
 Sortable tables
