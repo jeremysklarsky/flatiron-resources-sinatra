@@ -8,7 +8,7 @@ class Student < ActiveRecord::Base
 
   def total_karma
     student_karma = self.resources.collect {|resource| resource.karma}
-    student_karma.inject(:+)
+    student_karma.inject(:+) if !student_karma.nil?
   end
 
 end
