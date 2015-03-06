@@ -22,7 +22,9 @@ class ResourcesController < ApplicationController
 
   post '/cohorts/:id/resources' do
     @resource = Resource.create(params[:resource])
+    @resource.karma = 0
     @resource.save
+
     redirect "/cohorts/#{params[:id]}/resources"
   end
 
